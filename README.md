@@ -1,4 +1,5 @@
 The API Studio is a dynamic, completely customizable application for cataloging APIs
+--------------------------------------------------------
 <br><br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
