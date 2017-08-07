@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Masthead from '../../common/masthead';
+import Masthead from '../common/masthead';
 import Background from '../../images/Home/server-room.jpeg';
-import FeatureGrid from '../../common/feature-grid';
+import FeatureGrid from '../common/feature-grid';
 
 class HomeView extends Component {
 

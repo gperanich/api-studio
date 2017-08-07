@@ -5,12 +5,13 @@ import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
-import NavigationClose from 'material-ui/svg-icons/navigation/close';
+
+import Drawer from './drawer';
 
 const styles = {
-  appbar: {
-    backgroundColor: 'black'
-  }
+    appbar: {
+        backgroundColor: 'black'
+    }
 }
 
 class Login extends Component {
@@ -31,7 +32,7 @@ const Logged = (props) => (
         }
         targetOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-        iconStyle={{color: 'white'}}
+        iconStyle={{ color: 'white' }}
     >
         <MenuItem primaryText="Refresh" />
         <MenuItem primaryText="Help" />
@@ -40,14 +41,33 @@ const Logged = (props) => (
 );
 
 class Navbar extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            open: false,
+            logged: true
+        };
+    }
+
+    handleToggle = () => this.setState({ open: !this.state.open });
+    handleClose = () => this.setState({ open: false });
+    onRequestChange = (open) => { this.setState({ open }) };
+
     render() {
         return (
-            <AppBar
-                title="Your Logo"
-                onLeftIconButtonTouchTap={this.props.handleToggle}
-                iconElementRight={this.props.logged ? <Logged /> : <Login />}
-                style={styles.appbar}
-            />
+            <div>
+                <AppBar
+                    title="Your Logo"
+                    onLeftIconButtonTouchTap={this.handleToggle}
+                    iconElementRight={this.props.logged ? <Logged /> : <Login />}
+                    style={styles.appbar}
+                />
+                <Drawer
+                    open={this.state.open}
+                    handleClose={this.handleClose}
+                    onRequestChange={this.onRequestChange}
+                />
+            </div>
         );
     }
 }
