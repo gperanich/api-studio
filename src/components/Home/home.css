@@ -1,0 +1,15 @@
+.home-background {
+    height: 90vh;
+    background: #2980b9; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2980b9, #2c3e50); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2980b9, #2c3e50);
+}
+.header {
+    padding-top: 20vh;
+    color: white;
+    font-size: 3em;
+}
+.sub-header {
+    color: white;
+    font-size: 2em;
+}
