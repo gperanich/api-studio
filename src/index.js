@@ -6,10 +6,11 @@ import createHistory from 'history/createHashHistory';
 import { Provider } from 'react-redux';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import store from './store/configureStore';
-import 'semantic-ui-css/semantic.min.css';
 import './index.css';
+import 'semantic-ui-css/semantic.min.css';
 
 import Navbar from './components/common/navbar';
+import Sidebar from './components/common/sidebar';
 import Routes from './routes';
 
 injectTapEventPlugin();
@@ -20,8 +21,10 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <div className='App'>
-                <Navbar />
-                <Routes />
+                <Sidebar>
+                    <Navbar />
+                    <Routes />
+                </Sidebar>
             </div>
         </Router>
     </Provider>,
