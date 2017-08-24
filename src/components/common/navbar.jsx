@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeSidebar } from '../../actions/globalActions';
 
-import { Menu, Icon, Sidebar, Segment } from 'semantic-ui-react';
+import { Menu, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 
@@ -10,26 +10,94 @@ class Navbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            logged: true
-        };
+            searchActive: false
+        }
     }
 
     toggleVisibility = () => {
         this.props.changeSidebar(!this.props.sidebarVisible);
     }
+    closeSidebar = () => {
+        this.props.changeSidebar(false);
+    }
+    toggleSearch = () => {
+        this.setState({
+            searchActive: !this.state.searchActive
+        })
+    }
 
     render() {
-        const { visible } = this.props.sidebarVisible;
-        return (
-            <Menu inverted borderless className='navbar' size={'huge'} widths={16} >
-                <Icon name='sidebar' className='sidebar-button' onClick={this.toggleVisibility} />
-                <Link to='/'>
-                    <Menu.Item className='menu-item'>
-                        API Studio
+        console.log(this.props);
+        if (this.props.sidebarVisible === true) {
+            return (
+                <div>
+                    <Menu className='sidebar-menu' vertical borderless >
+                        <Link to='/'>
+                            <Menu.Item name='home'>
+                                Home
+                            </Menu.Item>
+                        </Link>
+                        <Link to='/'>
+                            <Menu.Item name='gamepad'>
+                                APIs
+                            </Menu.Item>
+                        </Link>
+                        <Link to='/'>
+                            <Menu.Item name='camera'>
+                                Pricing
+                            </Menu.Item>
+                        </Link>
+                    </Menu>
+                    <div onClick={() => { this.closeSidebar() }}>
+                        <Menu inverted borderless className='navbar-transformed' size='huge' >
+                            <Menu.Menu position='left'>
+                                <Menu.Item className='menu-item'>
+                                    <Icon name='sidebar' className='sidebar-button' id='sidebar-button' onClick={this.toggleVisibility} />
+                                </Menu.Item>
+                            </Menu.Menu>
+                            <Link to='/'>
+                                <Menu.Item className='menu-item'>
+                                    API Studio
+                                    </Menu.Item>
+                            </Link>
+                            <Menu.Menu position='right'>
+                                <Menu.Item className='menu-item'>
+                                    <Icon name='search' className='search-icon' onClick={() => { this.toggleSearch() }} />
+                                </Menu.Item>
+                            </Menu.Menu>
+                        </Menu >
+                        <div className='transformed-div'>
+                            {this.props.children}
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <Menu inverted borderless className='navbar' size='huge' fixed='top'>
+                        <Menu.Menu position='left'>
+                            <Menu.Item className='menu-item'>
+                                <Icon name='sidebar' className='sidebar-button' id='sidebar-button' onClick={this.toggleVisibility} />
+                            </Menu.Item>
+                        </Menu.Menu>
+                        <Link to='/'>
+                            <Menu.Item className='menu-item'>
+                                API Studio
                         </Menu.Item>
-                </Link>
-            </Menu >
-        );
+                        </Link>
+                        <Menu.Menu position='right'>
+                            <Menu.Item className='menu-item'>
+                                <Icon name='search' className='search-icon' onClick={() => { this.toggleSearch() }} />
+                            </Menu.Item>
+                        </Menu.Menu>
+                    </Menu >
+                    <div className='content-div'>
+                        {this.props.children}
+                    </div>
+                </div>
+            );
+        }
     }
 }
 

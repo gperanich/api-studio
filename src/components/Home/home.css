@@ -1,15 +1,64 @@
 .home-background {
-    height: 90vh;
-    background: #2980b9; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #2980b9, #2c3e50); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #2980b9, #2c3e50);
+    height: 100vh;
+    background: url('../../images/Home/desk.png');
+    background-size: cover;
+    width: 100%;
 }
-.header {
-    padding-top: 20vh;
+.header-jumbo {
+    padding-top: 25vh;
+    text-align: center;
+}
+.header-main {
     color: white;
-    font-size: 3em;
+    font-size: 4em;
 }
 .sub-header {
     color: white;
-    font-size: 2em;
+    margin-top: -5vh;
+    font-size: 1.5em;
+}
+.super-header {
+    color: white;
+}
+.features-row {
+    height: 100vh;
+}
+.desk-image {
+    background: url('../../images/Home/desk.png');
+    background-size: cover;
+    height: 400px;
+    width: 100%;
+    margin-top: 100px;
+}
+.swagger-example {
+    background: url('../../images/Home/swaggerUI.PNG');
+    height: 50vh;
+    border-radius: 50px;
+}
+.cms-example {
+    background: url('../../images/Home/cmsExample.PNG');
+    height: 50vh;
+    border-radius: 50px;
+}
+.info-div {
+    height: 80vh;
+    background: url('../../images/Home/swaggerCms.PNG');
+    margin-left: 2%;
+}
+.info-section {
+    background-color: white;
+    opacity: 0.8;
+    margin: 10%;
+    height: 40vh;
+}
+.catalog-info {
+    min-height: 30vh;
+    margin: 10vh 10vh;
+    background-color: white;
+    opacity: 0.7;
+    border-radius: 20px;
+}
+.list-item {
+    padding-top: 15px !important;
+    margin-left: 10px;
 }

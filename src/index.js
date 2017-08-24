@@ -10,8 +10,8 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
 import Navbar from './components/common/navbar';
-import Sidebar from './components/common/sidebar';
 import Routes from './routes';
+import Footer from './components/common/footer';
 
 injectTapEventPlugin();
 
@@ -21,10 +21,10 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <div className='App'>
-                <Sidebar>
-                    <Navbar />
+                <Navbar >
                     <Routes />
-                </Sidebar>
+                </Navbar>
+                <Footer />
             </div>
         </Router>
     </Provider>,
