@@ -1,82 +1,117 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import AppBar from 'material-ui/AppBar';
-import IconButton from 'material-ui/IconButton';
-import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import FlatButton from 'material-ui/FlatButton';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
+import { changeSidebar } from '../../actions/globalActions';
 
-import Drawer from './drawer';
-
-const styles = {
-    appbar: {
-        backgroundColor: 'black'
-    }
-}
-
-class Login extends Component {
-    static muiName = 'FlatButton';
-
-    render() {
-        return (
-            <FlatButton {...this.props} label="Login" />
-        );
-    }
-}
-
-const Logged = (props) => (
-    <IconMenu
-        {...props}
-        iconButtonElement={
-            <IconButton ><MoreVertIcon /></IconButton>
-        }
-        targetOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'top' }}
-        iconStyle={{ color: 'white' }}
-    >
-        <MenuItem primaryText="Refresh" />
-        <MenuItem primaryText="Help" />
-        <MenuItem primaryText="Sign out" />
-    </IconMenu>
-);
+import { Menu, Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import './navbar.css';
 
 class Navbar extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false,
-            logged: true
-        };
+            searchActive: false
+        }
     }
 
-    handleToggle = () => this.setState({ open: !this.state.open });
-    handleClose = () => this.setState({ open: false });
-    onRequestChange = (open) => { this.setState({ open }) };
+    toggleVisibility = () => {
+        this.props.changeSidebar(!this.props.sidebarVisible);
+    }
+    closeSidebar = () => {
+        this.props.changeSidebar(false);
+    }
+    toggleSearch = () => {
+        this.setState({
+            searchActive: !this.state.searchActive
+        })
+    }
 
     render() {
-        return (
-            <div>
-                <AppBar
-                    title="API Studio"
-                    onLeftIconButtonTouchTap={this.handleToggle}
-                    iconElementRight={this.props.isLoggedIn ? <Logged /> : <Login />}
-                    style={styles.appbar}
-                />
-                <Drawer
-                    open={this.state.open}
-                    handleClose={this.handleClose}
-                    onRequestChange={this.onRequestChange}
-                />
-            </div>
-        );
+        console.log(this.props);
+        if (this.props.sidebarVisible === true) {
+            return (
+                <div>
+                    <Menu className='sidebar-menu' vertical borderless >
+                        <Link to='/'>
+                            <Menu.Item name='home'>
+                                Home
+                            </Menu.Item>
+                        </Link>
+                        <Link to='/'>
+                            <Menu.Item name='gamepad'>
+                                APIs
+                            </Menu.Item>
+                        </Link>
+                        <Link to='/'>
+                            <Menu.Item name='camera'>
+                                Pricing
+                            </Menu.Item>
+                        </Link>
+                    </Menu>
+                    <div onClick={() => { this.closeSidebar() }}>
+                        <Menu inverted borderless className='navbar-transformed' size='huge' >
+                            <Menu.Menu position='left'>
+                                <Menu.Item className='menu-item'>
+                                    <Icon name='sidebar' className='sidebar-button' id='sidebar-button' onClick={this.toggleVisibility} />
+                                </Menu.Item>
+                            </Menu.Menu>
+                            <Link to='/'>
+                                <Menu.Item className='menu-item'>
+                                    API Studio
+                                    </Menu.Item>
+                            </Link>
+                            <Menu.Menu position='right'>
+                                <Menu.Item className='menu-item'>
+                                    <Icon name='search' className='search-icon' onClick={() => { this.toggleSearch() }} />
+                                </Menu.Item>
+                            </Menu.Menu>
+                        </Menu >
+                        <div className='transformed-div'>
+                            {this.props.children}
+                        </div>
+                    </div>
+                </div>
+            )
+        } else {
+            return (
+                <div>
+                    <Menu inverted borderless className='navbar' size='huge' fixed='top'>
+                        <Menu.Menu position='left'>
+                            <Menu.Item className='menu-item'>
+                                <Icon name='sidebar' className='sidebar-button' id='sidebar-button' onClick={this.toggleVisibility} />
+                            </Menu.Item>
+                        </Menu.Menu>
+                        <Link to='/'>
+                            <Menu.Item className='menu-item'>
+                                API Studio
+                        </Menu.Item>
+                        </Link>
+                        <Menu.Menu position='right'>
+                            <Menu.Item className='menu-item'>
+                                <Icon name='search' className='search-icon' onClick={() => { this.toggleSearch() }} />
+                            </Menu.Item>
+                        </Menu.Menu>
+                    </Menu >
+                    <div className='content-div'>
+                        {this.props.children}
+                    </div>
+                </div>
+            );
+        }
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        isLoggedIn: state.User.isLoggedIn
+        sidebarVisible: state.global.sidebarVisible
+    }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        changeSidebar: (bool) => {
+            dispatch(changeSidebar(bool))
+        }
     }
 }
 
-export default connect(mapStateToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

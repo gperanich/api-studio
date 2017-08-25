@@ -1,12 +1,11 @@
 import { combineReducers } from 'redux';
 import { reducer as form } from 'redux-form';
 
-import User from './userReducer';
-
+import {global} from './globalReducer';
 
 const rootReducer = combineReducers({
     form,
-    User
+    global
 });
 
 export default rootReducer;
