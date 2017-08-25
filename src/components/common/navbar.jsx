@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
@@ -57,9 +58,9 @@ class Navbar extends Component {
         return (
             <div>
                 <AppBar
-                    title="Your Logo"
+                    title="API Studio"
                     onLeftIconButtonTouchTap={this.handleToggle}
-                    iconElementRight={this.props.logged ? <Logged /> : <Login />}
+                    iconElementRight={this.props.isLoggedIn ? <Logged /> : <Login />}
                     style={styles.appbar}
                 />
                 <Drawer
@@ -72,4 +73,10 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLoggedIn: state.User.isLoggedIn
+    }
+}
+
+export default connect(mapStateToProps)(Navbar);

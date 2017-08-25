@@ -3,14 +3,16 @@ import Masthead from '../common/masthead';
 import Background from '../../images/Home/server-room.jpeg';
 import FeatureGrid from '../common/feature-grid';
 
+import './home.css';
+
 class HomeView extends Component {
 
     render() {
         return (
             <div>
                 <Masthead
-                    text={'Your Company Name'}
-                    subText={'Your Company Slogan'}
+                    text={'API Studio'}
+                    subText={'Always Connected'}
                     image={Background}
                 />
                 <FeatureGrid
