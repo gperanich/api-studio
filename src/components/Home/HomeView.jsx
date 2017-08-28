@@ -3,6 +3,8 @@ import './home.css';
 
 import { Grid, Button, Card, List } from 'semantic-ui-react';
 
+import './home.css';
+
 class HomeView extends Component {
 
     render() {

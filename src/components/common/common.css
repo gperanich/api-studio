@@ -1,0 +1,8 @@
+.background {
+    position: relative;
+    width: 100%;
+    height: 90vh;
+    overflow-y: hidden;
+    background: url('../../images/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);
+    color: white;
+}
