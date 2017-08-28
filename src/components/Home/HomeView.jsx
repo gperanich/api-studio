@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './home.css';
 
-import { Grid, Button, Card, List } from 'semantic-ui-react';
+import { Grid, Button, List } from 'semantic-ui-react';
 
 import './home.css';
 
