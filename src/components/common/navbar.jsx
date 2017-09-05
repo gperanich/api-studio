@@ -39,7 +39,7 @@ class Navbar extends Component {
                         </Link>
                         <Link to='/'>
                             <Menu.Item name='gamepad'>
-                                APIs
+                                Dashboard
                             </Menu.Item>
                         </Link>
                         <Link to='/'>
