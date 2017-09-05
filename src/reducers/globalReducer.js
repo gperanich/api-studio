@@ -1,7 +1,8 @@
 import * as types from '../types/types';
 
 const globalInitialState = {
-    sidebarVisible: false
+    sidebarVisible: false,
+    modalVisible: false
 }
 export const global = (state = globalInitialState, action) => {
     switch (action.type) {
@@ -9,6 +10,11 @@ export const global = (state = globalInitialState, action) => {
             return {
                 ...state,
                 sidebarVisible: action.payload
+            }
+        case types.MODAL_VISIBLE: 
+            return {
+                ...state,
+                modalVisible: action.payload
             }
         default:
             return state

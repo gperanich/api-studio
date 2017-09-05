@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { changeModal } from '../../actions/globalActions';
 import './home.css';
 
 import { Grid, Button, List } from 'semantic-ui-react';
-
-import './home.css';
 
 class HomeView extends Component {
 
@@ -18,7 +18,7 @@ class HomeView extends Component {
                         {/*<p className='sub-header' >It's A Big World; Stay Connected</p>*/}
                         <div style={{ textApgn: 'center' }}>
                             <Button className='home-buttons' content='Learn More' />
-                            <Button className='home-buttons' content='Sign Up / Sign In' />
+                            <Button className='home-buttons' content='Sign Up / Sign In' onClick={() => {this.props.changeModal(!this.props.modalVisible)}} />
                         </div>
                     </Grid.Column>
                 </Grid.Row>
@@ -85,4 +85,19 @@ class HomeView extends Component {
     }
 }
 
-export default HomeView;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        changeModal: (bool) => {
+            dispatch(changeModal(bool))
+        }
+    }
+}
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        modalVisible: state.global.modalVisible
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

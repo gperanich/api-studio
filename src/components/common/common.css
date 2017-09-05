@@ -6,3 +6,11 @@
     background: url('../../images/bg-pattern.png'), linear-gradient(to left, #7b4397, #dc2430);
     color: white;
 }
+
+.login-input {
+    width: 60%;
+}
+
+.login-text {
+    cursor: pointer;
+}

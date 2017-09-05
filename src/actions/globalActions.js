@@ -6,3 +6,10 @@ export function changeSidebar(bool) {
         payload: bool
     }
 }
+
+export function changeModal(bool) {
+    return {
+        type: types.MODAL_VISIBLE,
+        payload: bool
+    }
+}

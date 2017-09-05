@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { changeSidebar } from '../../actions/globalActions';
+import { changeSidebar, changeModal } from '../../actions/globalActions';
 
-import { Menu, Icon } from 'semantic-ui-react';
+import { Menu, Icon, Divider } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import './navbar.css';
 
@@ -27,7 +27,6 @@ class Navbar extends Component {
     }
 
     render() {
-        console.log(this.props);
         if (this.props.sidebarVisible === true) {
             return (
                 <div>
@@ -52,6 +51,10 @@ class Navbar extends Component {
                                 Pricing
                             </Menu.Item>
                         </Link>
+                        <Divider />
+                        <Menu.Item onClick={() => {this.props.changeModal(!this.props.modalVisible)}} >
+                            Login
+                        </Menu.Item>
                     </Menu>
                     <div onClick={() => { this.closeSidebar() }}>
                         <Menu inverted borderless className='navbar-transformed' size='huge' >
@@ -108,13 +111,17 @@ class Navbar extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        sidebarVisible: state.global.sidebarVisible
+        sidebarVisible: state.global.sidebarVisible,
+        modalVisible: state.global.modalVisible
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         changeSidebar: (bool) => {
             dispatch(changeSidebar(bool))
+        },
+        changeModal: (bool) => {
+            dispatch(changeModal(bool))
         }
     }
 }

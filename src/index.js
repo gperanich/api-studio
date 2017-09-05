@@ -10,6 +10,7 @@ import './index.css';
 import 'semantic-ui-css/semantic.min.css';
 
 import Navbar from './components/common/navbar';
+import Login from './components/common/login';
 import Routes from './routes';
 import Footer from './components/common/footer';
 
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Router history={history}>
             <div className='App'>
                 <Navbar >
+                    <Login />
                     <Routes />
                 </Navbar>
                 <Footer />
