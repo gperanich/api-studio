@@ -43,6 +43,11 @@ class Navbar extends Component {
                             </Menu.Item>
                         </Link>
                         <Link to='/'>
+                            <Menu.Item name='gamepad'>
+                                Documentation
+                            </Menu.Item>
+                        </Link>
+                        <Link to='/'>
                             <Menu.Item name='camera'>
                                 Pricing
                             </Menu.Item>
