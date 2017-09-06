@@ -24,6 +24,7 @@
     height: 100vh;
 }
 .home-buttons {
+    width:10%;
     opacity: 0.7;
     color: black !important;
 }

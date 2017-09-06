@@ -18,7 +18,7 @@ class HomeView extends Component {
                         {/*<p className='sub-header' >It's A Big World; Stay Connected</p>*/}
                         <div style={{ textApgn: 'center' }}>
                             <Button className='home-buttons' content='Learn More' />
-                            <Button className='home-buttons' content='Sign Up / Sign In' onClick={() => {this.props.changeModal(!this.props.modalVisible)}} />
+                            <Button className='home-buttons' content='Sign In' onClick={() => {this.props.changeModal(!this.props.modalVisible)}} />
                         </div>
                     </Grid.Column>
                 </Grid.Row>
