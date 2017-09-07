@@ -54,6 +54,9 @@ class CatalogIndex extends Component {
     onGroupingFilterChange = (e, v) => {
         this.props.addGroupingFilter(v.value);
     }
+    onDeleteFilter = (index) => {
+        this.props.deleteFilter(index);
+    }
     render() {
         console.log(this.props);
         return (
@@ -63,6 +66,7 @@ class CatalogIndex extends Component {
                     methodOptions={methodOptions}
                     onMethodFilterChange={this.onMethodFilterChange}
                     onGroupingFilterChange={this.onGroupingFilterChange}
+                    onDeleteFilter={this.onDeleteFilter}
                     activeFilters={this.props.activeFilters}
                     methodDropdown={this.state.methodDropdown}
                     groupingDropdown={this.state.groupingDropdown}
@@ -86,6 +90,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         addMethodFilter: (value) => {
             dispatch(actions.addMethodFilter(value))
+        },
+        deleteFilter: (index) => {
+            dispatch(actions.deleteFilterAction(index))
         }
     }
 }

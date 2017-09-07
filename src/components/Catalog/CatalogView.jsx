@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Divider, Segment, Label, Dropdown } from 'semantic-ui-react';
+import { Grid, Divider, Segment, Label, Dropdown, Icon } from 'semantic-ui-react';
 import './catalog.css';
 
 // import Loading from '../common/Loading';
@@ -19,23 +19,34 @@ class CatalogView extends Component {
                             <h2>Filter</h2>
                             <Divider />
                             <Dropdown className='method-filter' text='Method' disabled={this.props.methodDropdown} options={this.props.methodOptions} onChange={(e, v) => { this.props.onMethodFilterChange(e, v) }} />
-                            <Dropdown className='group-filter'  text='Grouping' disabled={this.props.groupingDropdown} >
+                            <Dropdown className='group-filter' text='Grouping' disabled={this.props.groupingDropdown} >
                                 <Dropdown.Menu>
-                                    {(Object.keys(this.props.apiList).map((group) => {
+                                    {this.props.apiList.map((group) => {
                                         return (
-                                            <Dropdown.Item key={group} value={group} text={group} onClick={(e, v) => { this.props.onGroupingFilterChange(e, v) }}/>
+                                            <Dropdown.Item key={group.group} value={group.group} text={group.group} onClick={(e, v) => { this.props.onGroupingFilterChange(e, v) }} />
                                         )
-                                    }))}
+                                    })}
                                 </Dropdown.Menu>
                             </Dropdown>
+
+                            <h2>Tags</h2>
+                            <Divider />
+                            {this.props.activeFilters.map((filter, index) => {
+                                return (
+                                    <Label key={index}>
+                                        {filter.value}
+                                        <Icon name='delete' onClick={() => { this.props.onDeleteFilter(index) }} />
+                                    </Label>
+                                )
+                            })}
                         </Grid.Column>
                         <Grid.Column>
-                            {Object.keys(this.props.apiList).map((category, index) => {
+                            {this.props.apiList.map((category, index) => {
                                 return (
                                     <div key={index} className='api-details'>
-                                        <h2>{category}</h2>
+                                        <h2>{category.group}</h2>
                                         <Divider />
-                                        {(this.props.apiList[category].map((api, i) => {
+                                        {category.value.map((api, i) => {
                                             if (api.method === 'GET') {
                                                 return (
                                                     <Segment color='blue' raised className='api-segment' key={i}>
@@ -64,7 +75,7 @@ class CatalogView extends Component {
                                                 )
                                             }
                                             return null;
-                                        }))}
+                                        })}
                                     </div>
                                 )
                             })}
