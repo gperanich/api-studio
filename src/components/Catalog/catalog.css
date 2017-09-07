@@ -1,0 +1,24 @@
+.catalog-view {
+    margin-top: 50px;
+}
+.api-details {
+    margin-bottom: 20px;
+}
+.api-segment {
+    cursor: pointer;
+}
+.api-url {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.api-description {
+    color: lightslategray
+}
+.group-filter {
+    margin-top: 20px;
+    width: 90%;
+}
+.method-filter {
+    width: 90%;
+}

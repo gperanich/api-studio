@@ -22,10 +22,9 @@ ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
             <div className='App'>
-                <Navbar >
-                    <Login />
-                    <Routes />
-                </Navbar>
+                <Navbar />
+                <Login />
+                <Routes />
                 <Footer />
             </div>
         </Router>

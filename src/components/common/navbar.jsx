@@ -31,23 +31,28 @@ class Navbar extends Component {
             return (
                 <div>
                     <Menu className='sidebar-menu' vertical borderless >
-                        <Link to='/'>
-                            <Menu.Item name='home'>
+                        <Link to='/' onClick={() => {this.toggleVisibility()}}>
+                            <Menu.Item>
                                 Home
                             </Menu.Item>
                         </Link>
-                        <Link to='/'>
-                            <Menu.Item name='gamepad'>
+                        <Link to='/' onClick={() => {this.toggleVisibility()}}>
+                            <Menu.Item>
                                 Dashboard
                             </Menu.Item>
                         </Link>
-                        <Link to='/'>
-                            <Menu.Item name='gamepad'>
+                        <Link to='/' onClick={() => {this.toggleVisibility()}}>
+                            <Menu.Item>
                                 Documentation
                             </Menu.Item> 
                         </Link>
-                        <Link to='/'>
-                            <Menu.Item name='camera'>
+                        <Link to='/demo' onClick={() => {this.toggleVisibility()}}>
+                            <Menu.Item>
+                                Demo
+                            </Menu.Item>
+                        </Link>
+                        <Link to='/' onClick={() => {this.toggleVisibility()}}>
+                            <Menu.Item>
                                 Pricing
                             </Menu.Item>
                         </Link>
