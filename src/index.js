@@ -21,11 +21,15 @@ const history = createHistory();
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
-            <div className='App'>
-                <Navbar />
-                <Login />
-                <Routes />
-                <Footer />
+            <div>
+                <div className='App'>
+                    <Navbar />
+                    <Login />
+                    <Routes />
+                </div>
+                <div>
+                    <Footer />
+                </div>
             </div>
         </Router>
     </Provider>,

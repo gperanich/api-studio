@@ -2,6 +2,7 @@ export const getApiList = () => {
     return [
         {
             "group": "People",
+            "description": "Luke Skywalker. Darth Vader. Princess Leia. This API will help you disover the timeless characters from the Star Wars series.",
             "value": [
                 {
                     "method": "GET",
@@ -27,6 +28,7 @@ export const getApiList = () => {
         },
         {
             "group": "Films",
+            "description": "This API deals with the details of the original Star Wars films.",
             "value": [
                 {
                     "method": "GET",
@@ -42,6 +44,7 @@ export const getApiList = () => {
         },
         {
             "group": "Starships",
+            "description": "Ever wondered what you would use for intergalactic travel? Now you will.",
             "value": [
                 {
                     "method": "GET",
@@ -67,6 +70,7 @@ export const getApiList = () => {
         },
         {
             "group": "Vehicles",
+            "description": "Everybody remembers the classic speederbike. Find info on this vehicle, and more.",
             "value": [
                 {
                     "method": "GET",
@@ -92,6 +96,7 @@ export const getApiList = () => {
         },
         {
             "group": "Planets",
+            "description": "Star Wars is famous for it's exotic locations. This API will help to explore the galaxy.",
             "value": [
                 {
                     "method": "GET",

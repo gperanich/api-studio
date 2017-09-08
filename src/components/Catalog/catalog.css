@@ -22,3 +22,17 @@
 .method-filter {
     width: 90%;
 }
+.view-toggle {
+    float: right;
+}
+.toggle-text {
+    float: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
+.catalog-search {
+    width: 100%;
+}
+.catalog-search > input {
+    border-radius: 20px !important;
+}

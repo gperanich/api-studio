@@ -21,6 +21,13 @@ function deleteFilter(data) {
     }
 }
 
+export function searchFilter(value) {
+    return {
+        type: types.SEARCH_AND_FILTER,
+        payload: value
+    }
+}
+
 export function addGroupingFilter(filter) {
     return (dispatch, getState) => {
         const {activeFilters} = getState().catalog;
