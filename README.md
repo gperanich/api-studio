@@ -1,4 +1,4 @@
-The API Studio is a dynamic, completely customizable application for cataloging APIs
+The API Studio is a dynamic application for cataloging the Star Wars APIs
 --------------------------------------------------------
 <br><br>
 
